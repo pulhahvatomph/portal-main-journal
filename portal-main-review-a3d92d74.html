@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>开云 · 稳定服务入口说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Noto Sans, Helvetica, Arial, sans-serif;
+            background: #f5f8fc;
+            color: #1c2e3a;
+            line-height: 1.6;
+            padding: 20px 16px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 880px;
+            width: 100%;
+        }
+
+        /* 蓝绿色点缀 */
+        .accent-border {
+            border-left: 5px solid #3c9a8e;
+            padding-left: 16px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7f3f1;
+            color: #2b7a70;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #13323b;
+            margin-bottom: 0.4rem;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #3e5f6b;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #d2e1e5;
+            padding-bottom: 18px;
+        }
+
+        /* 网格卡片 */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px 20px 22px;
+            box-shadow: 0 6px 16px rgba(50, 100, 110, 0.06);
+            transition: transform 0.1s ease, box-shadow 0.15s;
+            border: 1px solid #e3edef;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(48, 112, 112, 0.10);
+            border-color: #b3d3cf;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            display: block;
+            color: #3c9a8e;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #1b3b44;
+        }
+
+        .card p {
+            font-size: 0.96rem;
+            color: #395a64;
+            margin-bottom: 0;
+        }
+
+        .note-block {
+            background: #edf6f5;
+            border-radius: 24px;
+            padding: 28px 24px 24px;
+            margin: 30px 0 40px;
+            border: 1px solid #c1ddda;
+        }
+
+        .note-block h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .note-block p, .note-block li {
+            color: #20424c;
+        }
+
+        .note-block ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .note-block li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+        }
+
+        .note-block li::before {
+            content: "▹";
+            position: absolute;
+            left: 4px;
+            color: #2b8b7e;
+        }
+
+        .faq-mini {
+            margin: 28px 0 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .faq-item {
+            flex: 1 1 200px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1b4b4a;
+            margin-bottom: 2px;
+        }
+
+        .faq-item span {
+            font-size: 0.92rem;
+            color: #3c656f;
+        }
+
+        .link-sentence {
+            background: white;
+            border-radius: 60px;
+            padding: 18px 24px;
+            border: 1px solid #ccdfdd;
+            font-size: 1rem;
+            margin: 28px 0 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .link-sentence a {
+            color: #2c7f73;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #b2cfcb;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .link-sentence a:hover {
+            border-bottom-color: #2c7f73;
+            color: #17544b;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d7e5e6;
+            font-size: 0.85rem;
+            color: #5a7b82;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 20px;
+        }
+
+        .badge {
+            background: #dceeec;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #1e655d;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px 32px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subhead {
+                font-size: 1rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .card {
+                padding: 20px 16px;
+            }
+            .note-block {
+                padding: 20px 16px;
+            }
+            .link-sentence {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+            .faq-mini {
+                flex-direction: column;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            .tag {
+                font-size: 0.7rem;
+                padding: 3px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <span class="tag">✦ 服务说明</span>
+    <h1 class="accent-border">开云·稳定接入</h1>
+    <div class="subhead">一个偏向克制的产品视角 · 入口与页面使用说明</p></div>
+
+    <!-- 摘要部分 -->
+    <p style="font-size: 1.05rem; margin-bottom: 8px;">
+        <strong>开云</strong> 所指向的页面，定位于提供一种持续、可被检索的访问路径。与其说是一个首页，不如说它是一段经过整理的界面索引——简洁，尽量不造成歧义。以下从几个方面描述它的结构和使用时的注意事项。
+    </p>
+
+    <!-- 卡片网格：产品亮点 / 稳定入口特点 -->
+    <div class="cards-grid">
+        <div class="card">
+            <span class="card-icon">⚓</span>
+            <h3>固定指向</h3>
+            <p>该地址长期保持稳定，主要作为可被依赖的锚点。不随活动或短链跳转更改，降低链接失效的几率。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🧩</span>
+            <h3>轻度适配</h3>
+            <p>页面针对不同设备做了简明的排版适配，无论桌面、平板或手机，文本清晰，卡片对齐，减少缩放困扰。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📄</span>
+            <h3>信息克制</h3>
+            <p>不堆砌横幅或动态弹窗。内容围绕“介绍+引导”展开，不过度包装，适合快速了解概况。</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🌿</span>
+            <h3>蓝绿色调</h3>
+            <p>视觉以柔和蓝绿为主，辅助卡片与边框，不刺眼，阅读压力小。整体风格偏向干净与自然。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 可信说明 -->
+    <div class="note-block">
+        <h2>📌 使用建议 · 场景</h2>
+        <ul>
+            <li><strong>作为书签或固定标签页</strong> — 如果你需要经常回到某个说明页或某个功能引导，可将此链接放入收藏夹，便于日常快速定位。</li>
+            <li><strong>分享给有了解需求的朋友</strong> — 页面内容平实，不包含夸张宣传，适合作为第一手参考，让对方自己判断。</li>
+            <li><strong>移动端同样可用</strong> — 卡片式布局在窄屏下自动变为单列，所有文字保持可读，不需要横向滚动。</li>
+        </ul>
+        <div style="margin-top: 16px; background: #ffffffb3; border-radius: 16px; padding: 16px 18px; border: 1px solid #c7dbd8;">
+            <p style="margin-bottom: 6px; font-weight: 500;">📎 一份克制的可信说明</p>
+            <p style="font-size: 0.95rem; margin: 0;">页面本身不收集任何表单信息，未嵌入第三方跟踪脚本（除基础字体与视口控制外）。链接指向的 <a href="https://portal-main-ky.com" style="color: #2c7f73; text-decoration: underline; text-underline-offset: 3px;">开云</a> 资源由维护方提供，访问前建议根据自身网络环境做常规判断。本页仅作介绍，不构成任何形式的承诺或诱导。</p>
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子（除了上段已嵌入，再单独写一段） -->
+    <div class="link-sentence">
+        <span>🔗 如果你希望直接查看该页面，可以通过链接 <a href="https://portal-main-ky.com">开云</a> 前往。该地址只会用于展示基本的入口与说明内容，不包含外部重定向。</span>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div style="margin: 20px 0 12px;">
+        <h2 style="font-size: 1.2rem; font-weight: 500; color: #18464f; margin-bottom: 2px;">❔ 一些常见疑问摘要</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <strong>这个页面主要做什么？</strong>
+                <span>提供稳定的介绍与访问引导，便于初次接触的人了解用途，同时可作为长期入口。</span>
+            </div>
+            <div class="faq-item">
+                <strong>是否有其他版本？</strong>
+                <span>目前只有这一版中文说明页面，后续可能根据需求微调版式，但核心链接不变。</span>
+            </div>
+            <div class="faq-item">
+                <strong>链接失效怎么办？</strong>
+                <span>如果遇到无法访问的情况，通常是临时网络或服务端设置导致，可稍后重试。本页保留更新提示。</span>
+            </div>
+        </div>
+        <p style="font-size: 0.9rem; color: #48737c; margin-top: 6px;">* 如果还有疑问，可以通过页面底部或侧边方式反馈（当前页面不设表单，仅做介绍）。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>⏳ 最近更新 · 2025年4月</span>
+        <span class="badge">稳定入口 v.1</span>
+        <span>内容仅作说明参考</span>
+    </div>
+
+    <!-- 一个额外的隐藏引用，仅用于种子变化不显示 -->
+    <!-- 变化种子关联：无需显示 -->
+</div>
+</body>
+</html>
